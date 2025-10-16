@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    triggers {
+        githubPush()
+    }
     parameters {
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Tag for the Docker image')
     }
