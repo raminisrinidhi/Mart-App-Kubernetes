@@ -57,7 +57,9 @@ pipeline {
                   withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_credentials']]){
                 script {
                     sh "aws eks update-kubeconfig --name mart-app-cluster --region ca-west-1"
+                     sh "kubectl apply -f mongodb.yml"
                     sh "kubectl apply -f app-deployment.yml"
+
                 }
                   }
             }
